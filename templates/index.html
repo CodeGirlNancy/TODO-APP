@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Creating an App using Flask</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+</head>
+
+<body>
+    <h2 style="font: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-align: center;">Building an App using Flask</h2>
+    <h3 style="font-size: large;text-align: center;">TODO APP</h3>
+    <div id="wrapper">
+        <div id="content">
+
+            <form class="example" action="/add_task">
+                <input type="text" placeholder="Add a new task" name="Add a new task">
+                <button type="submit" style="background-color: rgb(27, 92, 214);border: none;"><i class="searh"></i>
+                    Create</button>
+
+            </form>
+
+        </div>
+    </div>
+
+    <div class="main">
+        <ul id ="tasklist" style="text-align: center;">
+            {% for tasks in my task%}
+            <li>
+                {{task}}
+                <form action="{{url_for('delete_task', task_id=loop.index0)}}" method="post" style="display: inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+            {% endfor %}
+            
+        </ul>
+    </div>
+    <script src="" async defer></script>
+</body>
+
+</html>
